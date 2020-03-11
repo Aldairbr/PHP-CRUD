@@ -19,13 +19,15 @@ session_start();
     ?>
 
     <br><hr><br>
-        <form action="../Controller/Controller.php">
+        <form action="../Controller/Controller.php" method="POST">
             ID: <?php echo $usuario['id']; ?><br>
             NOME: <?php echo $usuario['nome']; ?><br>
             TELEFONE: <?php echo $usuario['telefone']; ?><br>
             EMAIL: <?php echo $usuario['email']; ?><br>
             SENHA: <?php echo $usuario['senha']; ?><br>
-            <input type="submit" value="Deletar" name="deletar">
+                    
+            <input type="hidden" name="id" value="<?php echo $usuario['id'];?>">        
+            <input type="submit" value="Deletar" name="btDeletar">
         </form>
     <?php }?>
     <hr><br>

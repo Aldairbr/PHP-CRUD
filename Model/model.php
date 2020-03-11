@@ -39,7 +39,8 @@ function alterarUsuario($conexao, $array){
 
 function deletar($conexao, $array){
     try {
-        $usuarios = $conexao->prepare("DELETE FROM usuarios WHERE id= ?");
+        $usuarios = $conexao->prepare("DELETE FROM usuarios 
+                                       WHERE id = ?");
         $query = $usuarios->execute($array);   
          return $query;
     }catch(PDOException $e) {

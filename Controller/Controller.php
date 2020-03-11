@@ -19,3 +19,14 @@ if(isset($_POST['btCadastrar'])){
     header("location: ../index.php");
     
 }
+
+print_r($_POST['id']);
+if(isset($_POST['btDeletar'])){
+    
+    $id = $_POST['id'];
+    $array = array($id);
+
+    deletar($conexao, $array);
+    header("location: ../View/index.php");
+}
+?>
