@@ -16,11 +16,12 @@ if (isset($_POST['entrar'])) {
         $_SESSION['email_usuario'] = $results['email'];
         $_SESSION['senha_usuario'] = $results['senha'];
         }
+        header("location: ../View/index.php");
     }else{
         $_SESSION['login_invalido'] = "email ou senha invalidos";
         header("location: ../index.php");
     }
-    header("location: ../View/index.php");
+    
     
 }
 ?>

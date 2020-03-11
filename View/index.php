@@ -1,5 +1,6 @@
 <?php
 include("../conexao.php");
+include("../Model/model.php");
 session_start();
 
 ?>
@@ -11,13 +12,23 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <h1>DADOS DO USUARIO</h1><br><br>
+    <?php 
+        echo "Usuario Logado: ". $_SESSION['nome_usuario'];
+        $result = listar($conexao);
+                foreach($result as $usuario) {
+    ?>
 
-    ID: <?php echo $_SESSION['id_usuario']; ?><br>
-    NOME: <?php echo $_SESSION['nome_usuario']; ?><br>
-    TELEFONE: <?php echo $_SESSION['telefone_usuario']; ?><br>
-    EMAIL: <?php echo $_SESSION['email_usuario']; ?><br>
-    SENHA: <?php echo $_SESSION['senha_usuario']; ?><br>
-
+    <br><hr><br>
+        <form action="../Controller/Controller.php">
+            ID: <?php echo $usuario['id']; ?><br>
+            NOME: <?php echo $usuario['nome']; ?><br>
+            TELEFONE: <?php echo $usuario['telefone']; ?><br>
+            EMAIL: <?php echo $usuario['email']; ?><br>
+            SENHA: <?php echo $usuario['senha']; ?><br>
+            <input type="submit" value="Deletar" name="deletar">
+        </form>
+    <?php }?>
+    <hr><br>
     <form action="../Controller/sair.php">
         <input type="submit" value="sair">
     </form>
